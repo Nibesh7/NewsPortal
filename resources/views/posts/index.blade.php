@@ -1,0 +1,55 @@
+@extends('layouts.app')
+
+@section('content')
+
+
+<div class="container">
+    <a href="{{route('posts.create')}}" class="btn btn-success" method="GET"> Add Posts</a>
+
+    <table class="table table-striped">
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Category</td>
+            <td>user</td>
+            <td>tags</td>
+            <td>Description</td>
+            
+            <td>Created_at</td>
+            <td>Updated_at</td>
+            <td>image</td>
+            <td>Actions</td>
+        </tr>
+      @foreach ($posts as $post)
+        <tr>
+            <td>{{$post->id}}</td>
+           
+            <td>{{$post->name}}</td>
+            <td>{{$post->category->name}}</td>
+            <td>{{$post->user->name}}</td>
+            <td>
+                @foreach($post->tags as $tag) 
+                    <a href="{{ route('tags.show', $tag->id)}}">{{$tag->name}}</a>  
+                @endforeach
+            </td>   
+            <td>{{$post->description}}</td>
+            <td>{{$post->created_at}}</td>
+            <td>{{$post->updated_at}}</td>
+            <td>
+                name
+            </td>
+            <td>
+                <a href="{{route('posts.edit', $post->id)}}" class="btn btn-primary brn-sm">Edit</a> | 
+
+            <form action="{{route('posts.destroy', $post->id)}}" method="POST">
+                  @csrf
+                  @method('delete')
+                  <input type="submit" value="delete" class="btn btn-danger btn-sm ">
+                </form>
+            </td>
+        </tr>
+      @endforeach
+        
+    </table>
+</div>
+@endsection
