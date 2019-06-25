@@ -28,7 +28,7 @@
                 </div>
                 <div class="form-group">
                     <label for="tags">Tags</label>
-                        <select name="tags[]"   class="form-control" multiple >
+                        <select name="tags[]" class="form-control" multiple >
                             @foreach($tags as $tag)
                                 <option value="{{$tag->id}}">{{$tag->name}}</option>
                             @endforeach
@@ -44,7 +44,13 @@
                 <div class="form-group">
                     <label for="image">Image</label>
                     <input type="file" id="image" class="form-control" name="image" value="">
-                </div>                
+                </div>             
+                
+                <div class="form-control my-5">
+                    <label>News Type</label> <br>
+                    <input type="checkbox" name="Breaking_News" value="Breaking" class="panel">Breaking<br>
+                    <input type="checkbox" name="International_News" value="International_News"> International<br>
+                </div>
 
                 <button type="submit" class="btn btn-success" name="submit">Submit</button>
             </form >
@@ -52,5 +58,30 @@
     </div>
 
 </div>
+
+
+
+{{-- api concept --}}
+
+{{-- <script
+			  src="http://code.jquery.com/jquery-3.4.1.min.js"
+			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+              crossorigin="anonymous"></script>
+              
+<script> --}}
+    
+{{-- $.ajax({
+  url: "{{url('admin/categories/get_ajax')}}",
+  method: "post",
+  data: 
+  
+}).done(function(result) {
+    // console.log($.parseJSON(result))
+    console.log($(result))
+    $(result).each(function(category){
+        console.log(category)
+    })
+});
+</script> --}}
     
 @endsection

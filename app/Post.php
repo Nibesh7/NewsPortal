@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $fillable = ['name', 'description', 'category_id', 'image', 'user_id' ];
+    protected $fillable = ['name', 'description', 'category_id', 'image', 'user_id', 'International_News', 'Breaking_News'];
 
     public function category(){
         return $this->belongsTo(\App\Category::class);
@@ -20,6 +20,6 @@ class Post extends Model
     }
 
     public function user(){
-        return $this->BelongsTo(\App\User::class);
+        return $this->belongsTo(\App\User::class);
     }
 }

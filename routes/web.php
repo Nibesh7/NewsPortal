@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\FrontController;
 
 /*
 |--------------------------------------------------------------------------
@@ -11,23 +12,24 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('frontend.index');
+// });
 
+Route::get('/', 'FrontController@index');
 
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
 /*
 |--------------------------------------------------------------------------
 | categories Routes
 |--------------------------------------------------------------------------
-
 */
-Route::resource('admin/categories', 'Admin\CategoriesController');
+// Route::get('admin/categories/get_ajax', 'Admin\CategoriesController@get_ajax');
+Route::resource('admin/categories', 'Admin\CategoriesController')->middleware('auth');
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +38,7 @@ Route::resource('admin/categories', 'Admin\CategoriesController');
 
 */
 
-Route::resource('admin/posts', 'Admin\PostsController');
+Route::resource('admin/posts', 'Admin\PostsController')->middleware('auth');
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +47,13 @@ Route::resource('admin/posts', 'Admin\PostsController');
 
 */
 
-Route::resource('admin/tags', 'Admin\TagsController');
+Route::resource('admin/tags', 'Admin\TagsController')->middleware('auth');
 
+/*
+|--------------------------------------------------------------------------
+|       FrontEnd Routes
+|--------------------------------------------------------------------------
 
+*/
+
+Route::resource('/front','FrontController');    

@@ -17,7 +17,7 @@ class CategoriesController extends Controller
     {
         $categories = Category::all();
         // dd($categories);
-        return view('category.index', compact('categories'));
+        return view('admin.category.index', compact('categories'));
     }
 
     /**
@@ -27,7 +27,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view('category.create');
+        return view('admin.category.create');
     }
 
     /**
@@ -60,7 +60,7 @@ class CategoriesController extends Controller
     public function show($id)
     {
         $posts = Post::where('category_id', $id)->get();
-        return view('posts.index', compact('posts'));
+        return view('admin.posts.index', compact('posts'));
     }
 
     /**
@@ -74,7 +74,7 @@ class CategoriesController extends Controller
         $category = Category::find($id);
         
 
-        return view('category.edit', compact('category'));
+        return view('admin.category.edit', compact('category'));
     }
 
     /**
@@ -111,4 +111,9 @@ class CategoriesController extends Controller
 
         return redirect(route('categories.index'));
     }
+
+    // public function get_ajax(){
+
+    //     return \App\Category::pluck('name', 'id')->toArray();
+    // }
 }

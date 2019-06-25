@@ -18,6 +18,8 @@
             <td>Created_at</td>
             <td>Updated_at</td>
             <td>image</td>
+            <td>IsInternationalNews</td>
+            <td>IsBreakingNews</td>
             <td>Actions</td>
         </tr>
       @foreach ($posts as $post)
@@ -31,13 +33,22 @@
                 @foreach($post->tags as $tag) 
                     <a href="{{ route('tags.show', $tag->id)}}">{{$tag->name}}</a>  
                 @endforeach
+                
             </td>   
-            <td>{{$post->description}}</td>
+            <td>{{str_limit($post->description, 50, '&raquo;')}}</td>
             <td>{{$post->created_at}}</td>
             <td>{{$post->updated_at}}</td>
             <td>
-                name
+                <img src="{{asset('storage/images/posts/'. $post->image)}}" alt="image" height="100">
             </td>
+            <td>
+                {{$post-> International_News ? 'International' : 'Inactive'}}
+                
+            </td>
+            <td>
+                {{$post-> Breaking_News ? 'Breaking' : 'Inactive'}}
+            </td>
+           
             <td>
                 <a href="{{route('posts.edit', $post->id)}}" class="btn btn-primary brn-sm">Edit</a> | 
 

@@ -18,7 +18,7 @@ class TagsController extends Controller
     public function index()
     {
         $tags = Tag::all();
-        return view('tags.index', compact('tags'));
+        return view('admin.tags.index', compact('tags'));
     }
 
     /**
@@ -28,7 +28,7 @@ class TagsController extends Controller
      */
     public function create()
     {
-        return view('tags.create');
+        return view('admin.tags.create');
     }
 
     /**
@@ -59,7 +59,7 @@ class TagsController extends Controller
         $posts = $tag->posts;
 
 
-        return view('posts.index', compact('posts'));
+        return view('admin.posts.index', compact('posts'));
     }
 
     /**
@@ -72,7 +72,7 @@ class TagsController extends Controller
     {
         $tag = Tag::find($id);
 
-        return view('tags.edit', compact('tag'));
+        return view('admin.tags.edit', compact('tag'));
     }
 
     /**
