@@ -128,7 +128,7 @@ class PostsController extends Controller
         $post->name = request('name');
         $post->category_id = request('category_id');
         $post->description = request('description');
-        
+        // dd($request->all());
         /**
          * ===========================================
          *          For Editing Image
@@ -151,7 +151,7 @@ class PostsController extends Controller
         }
         $post->save();
         if(isset($_POST['tags'])){
-            $post->tags()->sync($request->get['tags']);
+            $post->tags()->sync($request->get('tags'));
 
         }
         return redirect(route('posts.index'));

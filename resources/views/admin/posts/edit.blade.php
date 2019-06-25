@@ -37,11 +37,11 @@
                 <div class="form-group">
                         <label for="tags">Tags</label>
                         @php $selcted_tags = $post->tags->pluck('id')->toArray(); @endphp
-                        <select name="tags[]" class="form-control" multiple  >
+                        <select name="tags[]" class="form-control" multiple>
                                 @foreach($tags as $tag)
                                     <option value="{{$tag->id}}" @if(in_array($tag->id, $selcted_tags)) selected="selcted" @endif > {{$tag->name}}</option>
                                 @endforeach
-                        </select >
+                        </select>
                 </div>
 
 

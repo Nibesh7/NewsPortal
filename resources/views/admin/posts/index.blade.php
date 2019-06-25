@@ -14,9 +14,6 @@
             <td>user</td>
             <td>tags</td>
             <td>Description</td>
-            
-            <td>Created_at</td>
-            <td>Updated_at</td>
             <td>image</td>
             <td>IsInternationalNews</td>
             <td>IsBreakingNews</td>
@@ -36,8 +33,7 @@
                 
             </td>   
             <td>{{str_limit($post->description, 50, '&raquo;')}}</td>
-            <td>{{$post->created_at}}</td>
-            <td>{{$post->updated_at}}</td>
+           
             <td>
                 <img src="{{asset('storage/images/posts/'. $post->image)}}" alt="image" height="100">
             </td>
@@ -50,7 +46,7 @@
             </td>
            
             <td>
-                <a href="{{route('posts.edit', $post->id)}}" class="btn btn-primary brn-sm">Edit</a> | 
+                <a href="{{route('posts.edit', $post->id)}}" class="btn btn-primary brn-sm">Edit</a> 
 
             <form action="{{route('posts.destroy', $post->id)}}" method="POST">
                   @csrf
