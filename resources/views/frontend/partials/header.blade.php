@@ -63,7 +63,7 @@
                                 <li class="active"><a href="index.html">Home</a></li>
                                 <li><a href="#">Pages</a>
                                     <ul class="dropdown">
-                                        <li><a href="index.html">Home</a></li>
+                                        <li><a href="#">Home</a></li>
                                         <li><a href="catagories-post.html">Catagories</a></li>
                                         <li><a href="single-post.html">Single Articles</a></li>
                                         <li><a href="about.html">About Us</a></li>

@@ -27,39 +27,9 @@
 <body>
     <!-- ##### Header Area Start ##### -->
     @include('frontend.partials.header')
+    @include('frontend.partials.news', ['breakings' => $breakings])
 
     @yield('content')
-
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     
@@ -189,6 +159,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         </div>
     </footer>
     <!-- ##### Footer Area Start ##### -->
+</body>
+</html>
 
     <!-- ##### All Javascript Files ##### -->
     <!-- jQuery-2.2.4 js -->

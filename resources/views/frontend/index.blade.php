@@ -4,56 +4,7 @@
     
 
     <!-- ##### Hero Area Start ##### -->
-    <div class="hero-area">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-12 col-lg-8">
-                    <!-- Breaking News Widget -->
-                    <div class="breaking-news-area d-flex align-items-center">
-                        <div class="news-title">
-                            <p>Breaking News</p>
-                        </div>
-                        <div id="breakingNewsTicker" class="ticker">
-                            <ul>
-                                
-                                @foreach ($posts as $post)
-                                    @if($post->Breaking_News == 'Breaking')
-                                         <li> <a href="">{{$post->name}}</a></li>
-                                    @endif
-                                @endforeach
 
-                                
-                                    
-                                {{-- <li>Welcome to Colorlib Family.</li>
-                                <li><a href="#">Nam eu metus sitsit amet, consec!</a></li> --}}
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Breaking News Widget -->
-                    <div class="breaking-news-area d-flex align-items-center mt-15">
-                        <div class="news-title title2">
-                            <p>International</p>
-                        </div>
-                        <div id="internationalTicker" class="ticker">
-                            <ul>
-                                <li><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
-                                <li><a href="#">Welcome to Colorlib Family.</a></li>
-                                <li><a href="#">Nam eu metus sitsit amet, consec!</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Hero Add -->
-                <div class="col-12 col-lg-4">
-                    <div class="hero-add">
-                        <a href="#"><img src="img/bg-img/hero-add.gif" alt=""></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- ##### Hero Area End ##### -->
 
     <!-- ##### Featured Post Area Start ##### -->
@@ -71,7 +22,10 @@
                                 </div>
                                 <div class="post-data">
                                     <a href="#" class="post-catagory">Finance</a>
-                                    <a href="#" class="post-title">
+                                    
+                                    {{-- aaaa --}}
+                                <a href="" class="post-title"></a>
+
                                         <h6>Financial news: A new company is born today at the stock market</h6>
                                     </a>
                                     <div class="post-meta">
@@ -132,30 +86,26 @@
                 </div>
 
                 <div class="col-12 col-md-6 col-lg-4">
+                        
                     <!-- Single Featured Post -->
                     @foreach ($categories as $category)
                         
                     <div class="single-blog-post small-featured-post d-flex">
                         <div class="post-thumb">
-                        <a href="#"><img src="{{'storage/images/posts/'}}" alt="image" height="100"></a>
+                        <a href="#"><img src="{{asset('storage/images/posts/'.$category->posts->first()->image)}}" alt="" height="100"></a>
                         </div>
                         <div class="post-data">
                             <a href="#" class="post-catagory">{{$category->name}}</a>
-                            
                             <div class="post-meta">
-                                <a href="#" class="post-title">
-                                        {{-- {{dd($category->posts->first()->description)}} --}}
-                                    <h6>{{str_limit($category->posts->first()->name)}}</h6>
-                                    
-
-                                </a>
+                        <a href="{{route('front.show', $category->posts->first()->id)}}">
+                                        {{str_limit($category->posts->first()->name)}}
+                                     </a>
+                              
                                 <p class="post-date"><span>7:00 AM</span> | <span>April 14</span></p>
                             </div>
                         </div>
                     </div>
-                    @endforeach
-
-                    
+                    @endforeach                    
 
                     {{-- <!-- Single Featured Post -->
                     <div class="single-blog-post small-featured-post d-flex">

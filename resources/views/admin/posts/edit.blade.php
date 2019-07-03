@@ -31,8 +31,10 @@
                 <div class="form-group">
                     <label for="description">Description</label>
                     {{-- <input type="text" id="description" class="form-control" name="description" value="{{old('description')?:$post->description}}"> --}}
-                <textarea name="description" id="description" class="form-control" cols="5" rows="5" value="{{old('description')?:$post->description}}">{{$post->description}}</textarea>
-                </div>
+                <textarea name="description" type="hidden" id="description" class="form-control" cols="5" rows="5" value="{{old('description')?:$post->description}}">{{$post->description}}</textarea>
+                {{-- <input id="description" type="hidden" name="description"> --}}
+                {{-- <trix-editor input="description" value="{{old('description')?:$post->description}}"> {{$post->description}}</trix-editor> --}}
+            </div>
 
                 <div class="form-group">
                         <label for="tags">Tags</label>
@@ -65,3 +67,13 @@
 </div>
     
 @endsection
+
+{{-- @section('css')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.1.1/trix.css">
+@endsection
+
+@section('js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.1.1/trix-core.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.1.1/trix.js"></script>
+@endsection --}}
+    

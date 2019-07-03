@@ -10,7 +10,8 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    @yield('js')
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -18,6 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('css')
 </head>
 <body>
     <div id="app">
@@ -50,13 +52,13 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a href="{{'posts'}}" class="nav-link">Post</a>
+                                <a href="{{url('admin/posts')}}" class="nav-link">Post</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{'categories'}}" class="nav-link">Category</a>
+                                <a href="{{'admin/categories'}}" class="nav-link">Category</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{'tags'}}" class="nav-link">Tags</a>
+                                <a href="{{'admin/tags'}}" class="nav-link">Tags</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
