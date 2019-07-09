@@ -48,8 +48,8 @@
                 
                 <div class="form-control my-5">
                     <label>News Type</label> <br>
-                    <input type="checkbox" name="Breaking_News" value="Breaking" class="panel">Breaking<br>
-                    <input type="checkbox" name="International_News" value="International_News"> International<br>
+                    <input type="checkbox" name="breaking" value="1" class="panel">Breaking<br>
+                    <input type="checkbox" name="trending" value="1"> Trending<br>
                 </div>
 
                 <button type="submit" class="btn btn-success" name="submit">Submit</button>

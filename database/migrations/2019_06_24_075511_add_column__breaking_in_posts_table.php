@@ -14,7 +14,7 @@ class AddColumnBreakingInPostsTable extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->string('Breaking_News', 100)->nullable();
+            $table->boolean('breaking')->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ class AddColumnBreakingInPostsTable extends Migration
     public function down()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->dropColumn('Breaking_News');
+            $table->dropColumn('breaking');
         });
     }
 }

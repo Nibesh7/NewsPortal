@@ -15,8 +15,8 @@
             <td>tags</td>
             <td>Description</td>
             <td>image</td>
-            <td>IsInternationalNews</td>
-            <td>IsBreakingNews</td>
+            <td>Trending</td>
+            <td>Breaking</td>
             <td>Actions</td>
         </tr>
       @foreach ($posts as $post)
@@ -32,17 +32,17 @@
                 @endforeach
                 
             </td>   
-            <td>{{str_limit($post->description, 50, '&raquo;')}}</td>
+            <td>{{str_limit($post->description, 50)}}</td>
            
             <td>
                 <img src="{{asset('storage/images/posts/'. $post->image)}}" alt="image" height="100">
             </td>
             <td>
-                {{$post-> International_News ? 'International' : 'Inactive'}}
+                {{$post-> trending ? 'yes' : 'no'}}
                 
             </td>
             <td>
-                {{$post-> Breaking_News ? 'Breaking' : 'Inactive'}}
+                {{$post-> breaking ? 'yes' : 'no'}}
             </td>
            
             <td>

@@ -55,9 +55,16 @@
                 </div>
 
                 <div class="form-control my-5">
-                        <label>News Type</label> <br>
-                        <input type="checkbox" name="Breaking" value="Breaking" class="panel">Breaking<br>
-                        <input type="checkbox" name="International" value="International"> International<br>
+                        {{-- <label>News Type</label> <br> --}}
+                        {{-- <label for="breaking">Breaking</label> --}}
+                        <input type="hidden" name="breaking" value="0">
+                        <input type="checkbox" name="breaking" value="1" class="panel"> Breaking<br>
+
+
+                        <br>
+                        {{-- <label for="">Trending</label> --}}
+                        <input type="hidden" name="trending" value="0">
+                        <input type="checkbox" name="trending" value="1" class="panel"> Trending<br>
                 </div>
                 <button type="submit" class="btn btn-success" name="submit">Submit</button>
             </form >

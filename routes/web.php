@@ -16,7 +16,7 @@ use App\Http\Controllers\FrontController;
 //     return view('frontend.index');
 // });
 
-Route::get('/', 'FrontController@index');
+Route::get('/', 'Frontend\FrontController@index');
 
 
 Auth::routes();
@@ -56,4 +56,6 @@ Route::resource('admin/tags', 'Admin\TagsController')->middleware('auth');
 
 */
 
-Route::resource('/front','FrontController');    
+Route::resource('front','Frontend\FrontController');    
+
+Route::resource('category', 'Frontend\FrontEndCategoryController');

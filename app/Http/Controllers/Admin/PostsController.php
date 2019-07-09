@@ -128,6 +128,8 @@ class PostsController extends Controller
         $post->name = request('name');
         $post->category_id = request('category_id');
         $post->description = request('description');
+        $post->breaking = request('breaking');
+        $post->trending = request('trending');
         // dd($request->all());
         /**
          * ===========================================

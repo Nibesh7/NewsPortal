@@ -27,11 +27,8 @@
 <body>
     <!-- ##### Header Area Start ##### -->
     @include('frontend.partials.header')
-    @include('frontend.partials.news', ['breakings' => $breakings])
-
+    @include('frontend.partials.news')
     @yield('content')
-
-
     
     <!-- ##### Footer Add Area Start ##### -->
     <div class="footer-add-area">

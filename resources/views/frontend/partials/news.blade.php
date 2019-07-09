@@ -11,9 +11,9 @@
                         <div id="breakingNewsTicker" class="ticker">
                             <ul>
                             
-                                @foreach ($breakings as $breaking)
-                                    @if($breaking->Breaking_News == 'Breaking')
-                                        <li> <a href="">{{$breaking->name}}</a></li>
+                                @foreach ($breakings as $break)
+                                    @if($break->breaking == '1')
+                                        <li> <a href="">{{$break->name}}</a></li>
                                     @endif
                                 @endforeach
                             </ul>
@@ -27,11 +27,15 @@
                         </div>
                         <div id="internationalTicker" class="ticker">
                             <ul>
-                                @foreach ($breakings as $breaking)
+                                @foreach ($internationalNews as $international)
+                                    <li><a href="">{{$international->name}}</a></li>
+                                   
+                                @endforeach
+                                {{-- @foreach ($breakings as $breaking)
                                     @if ($breaking->International_News == 'International_News')
                                         <li><a href="">{{$breaking->name}}</a></li>
                                     @endif
-                                @endforeach
+                                @endforeach --}}
                             </ul>
                         </div>
                     </div>
