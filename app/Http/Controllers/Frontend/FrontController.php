@@ -36,12 +36,17 @@ class FrontController extends Controller
     }
 
     public function show($id){
-        $post = Post::find($id);
-        $posts = Post::all();
+        // $post = Post::find($id);  
+        $post = Post::where('id', $id)->firstOrFail();
+
         $tags = Tag::all();
 
         $relatedPosts = Post::where('category_id', $post->category_id)->where('id', '<>', $post->id)->orderBy('id', 'desc')->limit(3)->get();
 
-        return view('frontend.single-post', compact('post', 'posts', 'breakings','tags','relatedPosts'));
+
+        $previous = Post::where('id', '<', $post->id)->orderBy('id', 'desc')->first();
+        $next = Post::where('id', '>', $post->id)->orderBy('id')->first();
+
+        return view('frontend.single-post', compact('post','tags','relatedPosts','previous','next'));
     }
 }

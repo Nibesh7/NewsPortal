@@ -62,7 +62,9 @@
                                 <p>Donec turpis erat, scelerisque id euismod sit amet, fermentum vel dolor. Nulla facilisi. Sed pellen tesque lectus et accu msan aliquam. Fusce lobortis cursus quam, id mattis sapien.</p>
                             </div>
                         </div>
-
+                        
+                        
+                        
                         <div class="pager d-flex align-items-center justify-content-between">
                             <div class="prev">
                             <a href="{{ url()->previous()}}" class="active"><i class="fa fa-angle-left"></i> previous</a>
@@ -72,10 +74,40 @@
                             </div>
                         </div>
 
+                        {{-- {{ $posts->links() }} --}}
+
+                        <div class="row">
+                            <div class="col-md-6">
+                        
+                                @if (isset($previous))
+                                    <div class="alert alert-success">
+                                    <a href="{{ route('front.show',$previous->id) }}">
+                                        <div class="btn-content">
+                                            <div class="btn-content-title"><i class="fa fa-arrow-left"></i> Previous Post</div>
+                                            <p class="btn-content-subtitle">{{ $previous->title }}</p>
+                                        </div>
+                                    </a>
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="col-md-6">
+                        
+                                @if (isset($next))
+                                <div class="alert alert-success">
+                                <a href="{{ route('front.show', $next->id) }}">
+                                    <div class="btn-content">
+                                        <div class="btn-content-title">Next Post <i class="fa fa-arrow-right"></i></div>
+                                        <p class="btn-content-subtitle">{{ $next->title }}</p>
+                                    </div>
+                                </a>
+                                </div>
+                                @endif
+                            </div>
+                        </div> 
                         <div class="section-heading">
                             <h6>Related</h6>
                         </div>
-                            
+                        
                         
                         <div class="row">
                         @foreach ($relatedPosts as $relate)

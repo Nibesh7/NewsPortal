@@ -39,9 +39,8 @@
                     </div>
 
 
-                    <nav aria-label="Page navigation example">
-                        {{$posts->links()}}
-                       
+                    <nav aria-label="Page navigation example center">
+                        {!! $posts->render() !!}                       
                     </nav>
                 </div>
 

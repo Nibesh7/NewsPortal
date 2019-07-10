@@ -59,3 +59,6 @@ Route::resource('admin/tags', 'Admin\TagsController')->middleware('auth');
 Route::resource('front','Frontend\FrontController');    
 
 Route::resource('category', 'Frontend\FrontEndCategoryController');
+
+
+Route::get('/single', 'FrontController@single');
