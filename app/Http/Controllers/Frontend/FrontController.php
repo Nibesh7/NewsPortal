@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Tag;
 use App\Post;
+use App\Comment;
 
 use App\Http\Controllers\Controller;
 
@@ -14,11 +15,7 @@ use App\Http\Controllers\Controller;
 class FrontController extends Controller
 {
     public function index(){
-        // $categories = Category::orderBy('id', 'desc')->whereHas('posts')->with('posts')->limit(6)->get();
-
-        // $breakings = Post::where('breaking','1')->get(); 
-
-        // $internationalNews = Post::where('category_id', 6)->orderBy('id', 'desc')->get();
+        
         $posts = Post::orderBy('id', 'asc')->get();
 
         $trendingPosts = Post::where('trending', '1')->get();
@@ -43,10 +40,11 @@ class FrontController extends Controller
 
         $relatedPosts = Post::where('category_id', $post->category_id)->where('id', '<>', $post->id)->orderBy('id', 'desc')->limit(3)->get();
 
-
         $previous = Post::where('id', '<', $post->id)->orderBy('id', 'desc')->first();
         $next = Post::where('id', '>', $post->id)->orderBy('id')->first();
 
-        return view('frontend.single-post', compact('post','tags','relatedPosts','previous','next'));
+        $comments = $post->comments()->limit(3)->get();
+
+        return view('frontend.single-post', compact('post','tags','relatedPosts','previous','next', 'comments'));
     }
 }

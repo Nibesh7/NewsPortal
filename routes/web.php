@@ -60,5 +60,4 @@ Route::resource('front','Frontend\FrontController');
 
 Route::resource('category', 'Frontend\FrontEndCategoryController');
 
-
-Route::get('/single', 'FrontController@single');
+Route::post('comment/{post}','Frontend\CommentController@store')->name('comment.store');

@@ -18,9 +18,9 @@
                             </div>
                             <div class="post-data">
                                 {{-- @foreach ($posts as $post) --}}
-                                <a href="#" class="post-catagory">{{$post->category->name}}</a>
-                                <a href="#" class="post-title">
-                                <h6>{{$post->name}}</h6>
+                                <a href="{{route('category.show', $post->category->id)}}" class="post-catagory">{{$post->category->name}}</a>
+                                <a href="{{route('front.show', $post->id)}}" class="post-title">
+                                     <h6>{{$post->name}}</h6>
                                 </a>
                                 <div class="post-meta">
                                 <p class="post-author">By <a href="#">{{$post->user->name}}</a></p>
@@ -121,8 +121,8 @@
 
                                     <div class="post-data">
 
-                                        <a href="#" class="post-catagory">{{$post->category->name}}</a>
-                                        <a href="#" class="post-title">
+                                        <a href="{{route('category.show',$post->category->id)}}" class="post-catagory">{{$post->category->name}}</a>
+                                        <a href="{{route('front.show', $post->id)}}" class="post-title">
                                             <h6>
                                                 {{$relate->name}}
                                             </h6>
@@ -142,7 +142,8 @@
                         <!-- Comment Area Start -->
                         <div class="comment_area clearfix">
                             <h5 class="title">3 Comments</h5>
-
+                            @foreach ($comments as $comment)
+                                
                             <ol>
                                 <!-- Single Comment Area -->
                                 <li class="single_comment_area">
@@ -150,51 +151,20 @@
                                     <div class="comment-content d-flex">
                                         <!-- Comment Author -->
                                         <div class="comment-author">
-                                            <img src="{{asset('img/bg-img/30.jpg')}}" alt="author">
+                                            <img src="{{asset('img/bg-img/')}}" alt="author">
                                         </div>
                                         <!-- Comment Meta -->
                                         <div class="comment-meta">
-                                            <a href="#" class="post-author">Christian Williams</a>
+                                            <a href="#" class="post-author">{{$comment->name}}</a>
                                             <a href="#" class="post-date">April 15, 2018</a>
-                                            <p>Donec turpis erat, scelerisque id euismod sit amet, fermentum vel dolor. Nulla facilisi. Sed pellen tesque lectus et accu msan aliquam. Fusce lobortis cursus quam, id mattis sapien.</p>
+                                            <p>{{$comment->comment}}</p>
                                         </div>
                                     </div>
-                                    <ol class="children">
-                                        <li class="single_comment_area">
-                                            <!-- Comment Content -->
-                                            <div class="comment-content d-flex">
-                                                <!-- Comment Author -->
-                                                <div class="comment-author">
-                                                    <img src="{{asset('img/bg-img/31.jpg')}}" alt="author">
-                                                </div>
-                                                <!-- Comment Meta -->
-                                                <div class="comment-meta">
-                                                    <a href="#" class="post-author">Sandy Doe</a>
-                                                    <a href="#" class="post-date">April 15, 2018</a>
-                                                    <p>Donec turpis erat, scelerisque id euismod sit amet, fermentum vel dolor. Nulla facilisi. Sed pellen tesque lectus et accu msan aliquam. Fusce lobortis cursus quam, id mattis sapien.</p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ol>
-                                </li>
-
-                                <!-- Single Comment Area -->
-                                <li class="single_comment_area">
-                                    <!-- Comment Content -->
-                                    <div class="comment-content d-flex">
-                                        <!-- Comment Author -->
-                                        <div class="comment-author">
-                                            <img src="{{asset('img/bg-img/32.jpg')}}" alt="author">
-                                        </div>
-                                        <!-- Comment Meta -->
-                                        <div class="comment-meta">
-                                            <a href="#" class="post-author">Christian Williams</a>
-                                            <a href="#" class="post-date">April 15, 2018</a>
-                                            <p>Donec turpis erat, scelerisque id euismod sit amet, fermentum vel dolor. Nulla facilisi. Sed pellen tesque lectus et accu msan aliquam. Fusce lobortis cursus quam, id mattis sapien.</p>
-                                        </div>
-                                    </div>
+                                    
                                 </li>
                             </ol>
+                            @endforeach
+
                         </div>
 
                         <div class="post-a-comment-area section-padding-80-0">
@@ -202,19 +172,20 @@
                             
                             <!-- Reply Form -->
                             <div class="contact-form-area">
-                                <form action="#" method="post">
+                                <form action="{{route('comment.store', $post->id)}}" method="post">
+                                    @csrf
                                     <div class="row">
                                         <div class="col-12 col-lg-6">
-                                            <input type="text" class="form-control" id="name" placeholder="Name*">
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="Name*">
                                         </div>
                                         <div class="col-12 col-lg-6">
-                                            <input type="email" class="form-control" id="email" placeholder="Email*">
+                                            <input type="email" class="form-control" id="email" name="email" placeholder="Email*">
                                         </div>
                                         <div class="col-12">
-                                            <input type="text" class="form-control" id="subject" placeholder="Website">
+                                            <input type="text" class="form-control" id="subject" name="website" placeholder="Website">
                                         </div>
                                         <div class="col-12">
-                                            <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+                                            <textarea name="comment" class="form-control" id="comment" name="" cols="30" rows="10" placeholder="Comment"></textarea>
                                         </div>
                                         <div class="col-12 text-center">
                                             <button class="btn newspaper-btn mt-30 w-100" type="submit">Submit Comment</button>
@@ -222,6 +193,7 @@
                                     </div>
                                 </form>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
