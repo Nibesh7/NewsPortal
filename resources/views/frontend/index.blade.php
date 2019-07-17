@@ -191,6 +191,7 @@
                     <div class="popular-news-widget mb-30">
                         @include('frontend.partials.mostpopular')    
                     </div>
+                    @include('frontend.partials.newsletter')
                     
                 </div>
             </div>

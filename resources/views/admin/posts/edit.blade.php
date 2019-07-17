@@ -21,10 +21,10 @@
                     <label for="category">Category</label>
                 <select name="category_id" class="form-control" id="category" >
                         @foreach ($categories as $category)
-                            <option value="{{$category->id}}">{{$category->name}}</option>
+                            <option value="{{$category->id}}" selected="selcted">{{$category->name}} </option>
                         @endforeach
 
-                    </select>
+                </select>
                     {{-- <input type="text" id="category" class="form-control" name="category" value=""> --}}
                 </div>
 

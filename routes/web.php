@@ -61,3 +61,5 @@ Route::resource('front','Frontend\FrontController');
 Route::resource('category', 'Frontend\FrontEndCategoryController');
 
 Route::post('comment/{post}','Frontend\CommentController@store')->name('comment.store');
+
+Route::post('newsletter', 'Frontend\NewsLetterController@store')->name('newsletter.store');

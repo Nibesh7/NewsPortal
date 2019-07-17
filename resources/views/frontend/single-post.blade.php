@@ -210,6 +210,7 @@
                                 {{-- <h3>4 Most Popular News</h3> --}}
                                 @include('frontend.partials.mostpopular')
                         </div>
+                        @include('frontend.partials.newsletter')
 
                         <!-- Latest Comments Widget -->
                         <div class="latest-comments-widget">
