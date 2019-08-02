@@ -1,9 +1,6 @@
 @extends('layouts.frontend')
 @section('content')
-    
-    
-
-    
+     
     <!-- ##### Blog Area Start ##### -->
     <div class="blog-area section-padding-0-80">
         <div class="container">
@@ -19,8 +16,8 @@
                                 <a href="#"><img src="{{asset('storage/images/posts/'.$post->image)}}" alt=""></a>
                             </div>
                             <div class="post-data">
-                                <a href="#" class="post-catagory">{{$post->category->name}}</a>
-                                <a href="#" class="post-title">
+                            <a href="{{route('category.show', $post->category->id)}}" class="post-catagory">{{$post->category->name}}</a>
+                                <a href="{{route('front.show', $post->id)}}" class="post-title">
                                     <h6>{{$post->name}}</h6>
                                 </a>
                                 <div class="post-meta">
@@ -63,57 +60,11 @@
                         <!-- Latest Comments Widget -->
                         <div class="latest-comments-widget">
                             <h3>Latest Comments</h3>
-
-                            <!-- Single Comments -->
-                            <div class="single-comments d-flex">
-                                <div class="comments-thumbnail mr-15">
-                                    <img src="img/bg-img/29.jpg" alt="">
-                                </div>
-                                <div class="comments-text">
-                                    <a href="#">Jamie Smith <span>on</span> Facebook is offering facial recognition...</a>
-                                    <p>06:34 am, April 14, 2018</p>
-                                </div>
-                            </div>
-
-                            <!-- Single Comments -->
-                            <div class="single-comments d-flex">
-                                <div class="comments-thumbnail mr-15">
-                                    <img src="img/bg-img/30.jpg" alt="">
-                                </div>
-                                <div class="comments-text">
-                                    <a href="#">Jamie Smith <span>on</span> Facebook is offering facial recognition...</a>
-                                    <p>06:34 am, April 14, 2018</p>
-                                </div>
-                            </div>
-
-                            <!-- Single Comments -->
-                            <div class="single-comments d-flex">
-                                <div class="comments-thumbnail mr-15">
-                                    <img src="img/bg-img/31.jpg" alt="">
-                                </div>
-                                <div class="comments-text">
-                                    <a href="#">Jamie Smith <span>on</span> Facebook is offering facial recognition...</a>
-                                    <p>06:34 am, April 14, 2018</p>
-                                </div>
-                            </div>
-
-                            <!-- Single Comments -->
-                            <div class="single-comments d-flex">
-                                <div class="comments-thumbnail mr-15">
-                                    <img src="img/bg-img/32.jpg" alt="">
-                                </div>
-                                <div class="comments-text">
-                                    <a href="#">Jamie Smith <span>on</span> Facebook is offering facial recognition...</a>
-                                    <p>06:34 am, April 14, 2018</p>
-                                </div>
-                            </div>
+                            @include('frontend.partials.comments')
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- ##### Blog Area End ##### -->
-
-    <!-- ##### Footer Area Start ##### -->
     @endsection

@@ -12,7 +12,7 @@
                         </div>
 
                         <!-- Login Search Area -->
-                        <div class="login-search-area d-flex align-items-center">
+                        {{-- <div class="login-search-area d-flex align-items-center">
                             <!-- Login -->
                             <div class="login d-flex">
                                 <a href="#">Login</a>
@@ -25,7 +25,7 @@
                                     <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                                 </form>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -41,7 +41,7 @@
 
                     <!-- Logo -->
                     <div class="logo">
-                        <a href="index.html"><img src="img/core-img/logo.png" alt=""></a>
+                        <a href="index.html"><img src="{{asset('img/core-img/logo.png')}}" alt=""></a>
                     </div>
 
                     <!-- Navbar Toggler -->

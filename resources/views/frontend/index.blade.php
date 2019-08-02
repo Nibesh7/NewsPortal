@@ -1,12 +1,6 @@
 @extends('layouts.frontend')
 
 @section('content')
-    
-
-    <!-- ##### Hero Area Start ##### -->
-
-    <!-- ##### Hero Area End ##### -->
-
     <!-- ##### Featured Post Area Start ##### -->
     <div class="featured-post-area">
         <div class="container">
@@ -14,73 +8,61 @@
                 <div class="col-12 col-md-6 col-lg-8">
                     <div class="row">
 
-                        <!-- Single Featured Post -->
+                        @foreach ($featuredPost1 as $feature)
+                          <!-- Single Featured Post -->
                         <div class="col-12 col-lg-7">
-                            <div class="single-blog-post featured-post">
-                                <div class="post-thumb">
-                                    <a href="#"><img src="img/bg-img/16.jpg" alt=""></a>
-                                </div>
-                                <div class="post-data">
-                                <a href="" class="post-catagory">Finance</a>
-                                    
-                                    {{-- aaaa --}}
-                                <a href="" class="post-title"></a>
-
-                                        <h6>Financial news: A new company is born today at the stock market</h6>
-                                    </a>
-                                    <div class="post-meta">
-                                        <p class="post-author">By <a href="#">Christinne Williams</a></p>
-                                        <p class="post-excerp">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales placerat. Sed varius leo ac leo fermentum, eu cursus nunc maximus. Integer convallis nisi nibh, et ornare neque ullamcorper ac. Nam id congue lectus, a venenatis massa. Maecenas justo libero, vulputate vel nunc id, blandit feugiat sem. </p>
-                                        <!-- Post Like & Post Comment -->
-                                        <div class="d-flex align-items-center">
-                                            <a href="#" class="post-like"><img src="img/core-img/like.png" alt=""> <span>392</span></a>
-                                            <a href="#" class="post-comment"><img src="img/core-img/chat.png" alt=""> <span>10</span></a>
+                                <div class="single-blog-post featured-post">
+                                    <div class="post-thumb">
+                                        <a href="#"><img src="{{asset('storage/images/posts/'.$feature->image)}}" alt=""></a>
+                                    </div>
+                                    <div class="post-data">
+                                    <a href="{{route('category.show', $feature->category->id)}}" class="post-catagory">{{$feature->category->name}}</a>
+                                        
+                                        {{-- aaaa --}}
+                                     <a href="{{route('front.show', $feature->id)}}" class="post-title">
+    
+                                            <h6>{{$feature->name}}</h6>
+                                        </a>
+                                        <div class="post-meta">
+                                            <p class="post-author">By <a href="#">{{$feature->user->name}}</a></p>
+                                            <p class="post-excerp">{{str_limit($feature->description, '200')}}</p>
+                                            <!-- Post Like & Post Comment -->
+                                            <div class="d-flex align-items-center">
+                                                <a href="#" class="post-like"><img src="img/core-img/like.png" alt=""> <span>392</span></a>
+                                                <a href="#" class="post-comment"><img src="img/core-img/chat.png" alt=""> <span>10</span></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                            </div>  
+                        @endforeach
 
+                        
+                        
                         <div class="col-12 col-lg-5">
                             <!-- Single Featured Post -->
+                            @foreach ($featuredPost2 as $featurePost)
                             <div class="single-blog-post featured-post-2">
-                                <div class="post-thumb">
-                                    <a href="#"><img src="img/bg-img/17.jpg" alt=""></a>
-                                </div>
-                                <div class="post-data">
-                                    <a href="#" class="post-catagory">Finance</a>
-                                    <div class="post-meta">
-                                        <a href="#" class="post-title">
-                                            <h6>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales placerat. Sed varius leo ac...</h6>
-                                        </a>
-                                        <!-- Post Like & Post Comment -->
-                                        <div class="d-flex align-items-center">
-                                            <a href="#" class="post-like"><img src="img/core-img/like.png" alt=""> <span>392</span></a>
-                                            <a href="#" class="post-comment"><img src="img/core-img/chat.png" alt=""> <span>10</span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                    <div class="post-thumb">
+                                        <a href="#"><img src="{{asset('storage/images/posts/'.$featurePost->image)}}" alt=""></a>
 
-                            <!-- Single Featured Post -->
-                            <div class="single-blog-post featured-post-2">
-                                <div class="post-thumb">
-                                    <a href="#"><img src="img/bg-img/18.jpg" alt=""></a>
-                                </div>
-                                <div class="post-data">
-                                    <a href="#" class="post-catagory">Finance</a>
-                                    <div class="post-meta">
-                                        <a href="#" class="post-title">
-                                            <h6>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales placerat. Sed varius leo ac...</h6>
-                                        </a>
-                                        <!-- Post Like & Post Comment -->
-                                        <div class="d-flex align-items-center">
-                                            <a href="#" class="post-like"><img src="img/core-img/like.png" alt=""> <span>392</span></a>
-                                            <a href="#" class="post-comment"><img src="img/core-img/chat.png" alt=""> <span>10</span></a>
+                                    </div>
+                                    <div class="post-data">
+                                        <a href="#" class="post-catagory">{{$featurePost->category->name}}</a>
+                                        <div class="post-meta">
+                                            <a href="{{route('front.show', $featurePost->id)}}" class="post-title">
+                                                <h6>{{$featurePost->name}}</h6>
+                                            </a>
+                                            <!-- Post Like & Post Comment -->
+                                            <div class="d-flex align-items-center">
+                                                <a href="#" class="post-like"><img src="img/core-img/like.png" alt=""> <span>392</span></a>
+                                                <a href="#" class="post-comment"><img src="img/core-img/chat.png" alt=""> <span>10</span></a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                </div>  
+                            @endforeach
+                           
                         </div>
                     </div>
                 </div>

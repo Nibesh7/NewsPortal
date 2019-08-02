@@ -24,6 +24,10 @@ class FrontController extends Controller
 
         $popularPosts = Post::orderBy('count','desc')->limit(3)->get();
 
+        $featuredPost1 = Post::orderBy('id', 'desc')->limit(1)->get();
+
+        $featuredPost2 = Post::orderBy('id', 'asc')->limit(2)->get();
+
 
 
 
@@ -35,7 +39,7 @@ class FrontController extends Controller
 
         // $news = Post::where('category_id', 4)->orderBy('id', 'desc')->limit(1)->get();
         // dd('$categories');
-        return view('frontend.index', compact('tags', 'posts', 'trendingPosts','worldNews','popularPosts'));
+        return view('frontend.index', compact('tags', 'posts', 'trendingPosts','worldNews','popularPosts','featuredPost1','featuredPost2'));
     }
 
     public function show($id){
@@ -54,6 +58,8 @@ class FrontController extends Controller
 
         $comments = $post->comments()->limit(3)->get();
 
-        return view('frontend.single-post', compact('post','tags','relatedPosts','previous','next', 'comments'));
+        $latestComments = Comment::orderBy('id', 'asc')->limit(4)->get();
+
+        return view('frontend.single-post', compact('post','tags','relatedPosts','previous','next', 'comments', 'latestComments'));
     }
 }

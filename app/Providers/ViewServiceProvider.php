@@ -3,6 +3,7 @@
 namespace App\Providers;
 use App\Post;
 use App\Category;
+use App\Comment;
 use Illuminate\Support\ServiceProvider;
 
 use Illuminate\Support\Facades\View;
@@ -45,6 +46,10 @@ class ViewServiceProvider extends ServiceProvider
 
         View::composer('frontend.partials.mostpopular', function($view){
             $view->with('populars', Post::orderBy('count', 'desc')->limit(4)->get());
+
+        });
+        View::composer('frontend.partials.comments', function($view){
+            $view->with('latestComments', Comment::orderBy('id', 'asc')->limit(4)->get());
 
         });
         
