@@ -3,14 +3,18 @@
         <h3>4 Most Popular News</h3>
 
         <!-- Single Popular Blog -->
-        <div class="single-popular-post">
-            <a href="#">
-                <h6><span>1.</span> Amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales.</h6>
-            </a>
-            <p>April 14, 2018</p>
-        </div>
+        @foreach ($populars as $popular)
+            <div class="single-popular-post">
+                <a href="{{route('front.show', $popular->id)}}">
+                <h6><span>
+                </span>{{$popular->name}}</h6>
+                </a>
+                {{-- <p>April 14, 2018</p> --}}
+            </div>  
+        @endforeach
+        
 
-        <!-- Single Popular Blog -->
+        {{-- <!-- Single Popular Blog -->
         <div class="single-popular-post">
             <a href="#">
                 <h6><span>2.</span> Consectetur adipiscing elit. Nam eu metus sit amet odio sodales placer.</h6>
@@ -35,4 +39,4 @@
         </div>
 
     
-   
+    --}}

@@ -22,6 +22,12 @@ class FrontController extends Controller
 
         $worldNews = Post::where('category_id', 5)->orderBy('id', 'desc')->get();
 
+        $popularPosts = Post::orderBy('count','desc')->limit(3)->get();
+
+
+
+
+
 
 
         
@@ -29,16 +35,19 @@ class FrontController extends Controller
 
         // $news = Post::where('category_id', 4)->orderBy('id', 'desc')->limit(1)->get();
         // dd('$categories');
-        return view('frontend.index', compact('tags', 'posts', 'trendingPosts','worldNews'));
+        return view('frontend.index', compact('tags', 'posts', 'trendingPosts','worldNews','popularPosts'));
     }
 
     public function show($id){
         // $post = Post::find($id);  
         $post = Post::where('id', $id)->firstOrFail();
 
+        $post->increment('count');
+
         $tags = Tag::all();
 
         $relatedPosts = Post::where('category_id', $post->category_id)->where('id', '<>', $post->id)->orderBy('id', 'desc')->limit(3)->get();
+
 
         $previous = Post::where('id', '<', $post->id)->orderBy('id', 'desc')->first();
         $next = Post::where('id', '>', $post->id)->orderBy('id')->first();

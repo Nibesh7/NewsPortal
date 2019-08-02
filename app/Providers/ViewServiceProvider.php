@@ -42,6 +42,11 @@ class ViewServiceProvider extends ServiceProvider
             $view->with('categories', Category::orderBy('id', 'desc')->whereHas('posts')->with('posts')->limit(6)->get()); 
            
         });
+
+        View::composer('frontend.partials.mostpopular', function($view){
+            $view->with('populars', Post::orderBy('count', 'desc')->limit(4)->get());
+
+        });
         
     }
 }
